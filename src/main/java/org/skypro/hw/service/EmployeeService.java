@@ -38,7 +38,7 @@ public class EmployeeService {
 
         String fullName = getFullName(employeeForFind);
 
-        checkExistence(fullName);
+        checkExistence(employeeForFind);
 
         return employeeByFullName.get(fullName);
     }
@@ -47,7 +47,7 @@ public class EmployeeService {
         Employee employeeForRemove = new Employee(firstName, lastName);
         String fullName = getFullName(employeeForRemove);
 
-        checkExistence(fullName);
+        checkExistence(employeeForRemove);
 
         employeeByFullName.remove(fullName);
         return employeeForRemove;
@@ -57,8 +57,8 @@ public class EmployeeService {
         return employeeByFullName.values();
     }
 
-    private void checkExistence(String fullName) {
-        if (!employeeByFullName.containsKey(fullName)) {
+    private void checkExistence(Employee employee) {
+        if (!employeeByFullName.containsKey(getFullName(employee))) {
             throw new EmployeeNotFoundException("Такого сотрудника нет");
         }
     }
