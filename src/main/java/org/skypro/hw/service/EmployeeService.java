@@ -17,12 +17,12 @@ public class EmployeeService {
 
 
     public EmployeeService() {
-        employees.add(new Employee("Иван", "Иванов", 1, 50));
-        employees.add(new Employee("Иван", "Иванов", 1, 50));
-        employees.add(new Employee("Иван1", "Иванов1", 1, 70));
-        employees.add(new Employee("Иван2", "Иванов2", 2, 60));
-        employees.add(new Employee("Иван3", "Иванов3", 2, 66.6));
-        employees.add(new Employee("Иван4", "Иванов4", 3, 500));
+        employees.add(new Employee("Иван", "аИванов", 1, 2134));
+        employees.add(new Employee("Иван", "Иванов", 1, 2));
+        employees.add(new Employee("Иван1", "Иванов1", 1, 32));
+        employees.add(new Employee("Иван2", "мИванов2", 2, 133));
+        employees.add(new Employee("Иван3", "яИванов3", 2, -66.6));
+        employees.add(new Employee("Иван4", "ванов4", 3, 500));
     }
 
     public Employee add(String firstName, String lastName) {

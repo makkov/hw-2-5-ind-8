@@ -35,4 +35,9 @@ public class DepartmentController {
     public Map<Integer, List<Employee>> employeesByDepartment(@RequestParam(required = false) Integer departmentId) {
         return departmentService.employeesByDepartment(departmentId);
     }
+
+    @GetMapping("/test")
+    public void test() {
+        departmentService.testComparator();
+    }
 }

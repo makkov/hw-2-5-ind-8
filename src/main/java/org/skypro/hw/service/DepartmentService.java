@@ -41,4 +41,13 @@ public class DepartmentService {
         return employees.stream()
                 .filter(e -> departmentId == null || e.getDepartmentId().equals(departmentId));
     }
+
+    public void testComparator() {
+        List<Employee> employees = employeeService.getAll();
+        System.out.println(employees);
+        employees.sort((x, y) -> Double.compare(x.getSalary(), y.getSalary()));
+        System.out.println(employees);
+        employees.sort((x, y) -> -1 * x.getLastName().compareTo(y.getLastName()));
+        System.out.println(employees);
+    }
 }
