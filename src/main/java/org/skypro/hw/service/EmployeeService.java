@@ -1,9 +1,11 @@
 package org.skypro.hw.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.skypro.hw.entity.Employee;
 import org.skypro.hw.exception.EmployeeAlreadyAddedException;
 import org.skypro.hw.exception.EmployeeNotFoundException;
 import org.skypro.hw.exception.EmployeeStorageIsFullException;
+import org.skypro.hw.exception.InvalidNameException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,17 +17,11 @@ public class EmployeeService {
     private final List<Employee> employees = new ArrayList<>();
     private final int MAX_SIZE = 2;
 
-
-    public EmployeeService() {
-        employees.add(new Employee("Иван", "Иванов", 1, 50));
-        employees.add(new Employee("Иван", "Иванов", 1, 50));
-        employees.add(new Employee("Иван1", "Иванов1", 1, 70));
-        employees.add(new Employee("Иван2", "Иванов2", 2, 60));
-        employees.add(new Employee("Иван3", "Иванов3", 2, 66.6));
-        employees.add(new Employee("Иван4", "Иванов4", 3, 500));
-    }
-
     public Employee add(String firstName, String lastName) {
+
+        checkUpperCase(firstName, lastName);
+        checkAlpha(firstName, lastName);
+
         if (employees.size() >= MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Массив сотрудников переполнен");
         }
@@ -38,6 +34,29 @@ public class EmployeeService {
 
         employees.add(newEmployee);
         return newEmployee;
+    }
+
+    private void checkUpperCase(String firstName, String lastName) {
+        String capitalizeFirstName = StringUtils.capitalize(firstName);
+        String capitalizeLastName = StringUtils.capitalize(lastName);
+
+        if (!(firstName.equals(capitalizeFirstName))) {
+            throw new InvalidNameException("Имя начинается не с заглавной буквы");
+        }
+
+        if (!(lastName.equals(capitalizeLastName))) {
+            throw new InvalidNameException("Фамилия начинается не с заглавной буквы");
+        }
+    }
+
+    private void checkAlpha(String firstName, String lastName) {
+        if (!StringUtils.isAlpha(firstName)) {
+            throw new InvalidNameException("Имя содержит запрещенные символы");
+        }
+
+        if (!StringUtils.isAlpha(lastName)) {
+            throw new InvalidNameException("Фамилия содержит запрещенные символы");
+        }
     }
 
     public Employee find(String firstName, String lastName) {
