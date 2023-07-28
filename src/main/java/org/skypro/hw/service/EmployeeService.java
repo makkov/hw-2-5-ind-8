@@ -17,6 +17,23 @@ public class EmployeeService {
     private final List<Employee> employees = new ArrayList<>();
     private final int MAX_SIZE = 2;
 
+    //для простоты тестирования
+    public EmployeeService() {
+        employees.addAll(
+                List.of(
+
+                        new Employee("ivan11", "ivanov11", 1, 12341.11),
+                        new Employee("ivan12", "ivanov12", 1, 4321),
+                        new Employee("ivan13", "ivanov13", 1, 3433.99),
+
+                        new Employee("ivan21", "ivanov21", 2, 777.77),
+
+                        new Employee("ivan31", "ivanov31", 3, 8234.12),
+                        new Employee("ivan32", "ivanov32", 3, 1234.56)
+                )
+        );
+    }
+
     public Employee add(String firstName, String lastName) {
 
         checkUpperCase(firstName, lastName);

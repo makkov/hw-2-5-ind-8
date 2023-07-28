@@ -2,10 +2,7 @@ package org.skypro.hw.controller;
 
 import org.skypro.hw.entity.Employee;
 import org.skypro.hw.service.DepartmentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -34,5 +31,25 @@ public class DepartmentController {
     @GetMapping("/all")
     public Map<Integer, List<Employee>> employeesByDepartment(@RequestParam(required = false) Integer departmentId) {
         return departmentService.employeesByDepartment(departmentId);
+    }
+
+    @GetMapping(path = "{id}/employees")
+    public List<Employee> getEmployeesByDepId(@PathVariable int id) {
+        return departmentService.getEmployeesByDepId(id);
+    }
+
+    @GetMapping(path = "{id}/salary/sum")
+    public double getSalarySumByDepId(@PathVariable int id) {
+        return departmentService.getSalarySumByDepId(id);
+    }
+
+    @GetMapping(path = "{id}/salary/max")
+    public double getMaxSalaryByDepId(@PathVariable int id) {
+        return departmentService.getMaxSalaryByDepId(id);
+    }
+
+    @GetMapping(path = "{id}/salary/min")
+    public double getMinSalaryByDepId(@PathVariable int id) {
+        return departmentService.getMinSalaryByDepId(id);
     }
 }
