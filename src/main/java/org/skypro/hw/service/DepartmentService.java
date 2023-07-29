@@ -4,7 +4,6 @@ import org.skypro.hw.entity.Employee;
 import org.skypro.hw.exception.EmployeeNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Comparator;
 import java.util.List;
