@@ -33,22 +33,22 @@ public class DepartmentController {
         return departmentService.employeesByDepartment(departmentId);
     }
 
-    @GetMapping(path = "{id}/employees")
+    @GetMapping(path = "/{id}/employees")
     public List<Employee> getEmployeesByDepId(@PathVariable int id) {
         return departmentService.getEmployeesByDepId(id);
     }
 
-    @GetMapping(path = "{id}/salary/sum")
+    @GetMapping(path = "/{id}/salary/sum")
     public double getSalarySumByDepId(@PathVariable int id) {
         return departmentService.getSalarySumByDepId(id);
     }
 
-    @GetMapping(path = "{id}/salary/max")
+    @GetMapping(path = "/{id}/salary/max")
     public double getMaxSalaryByDepId(@PathVariable int id) {
         return departmentService.getMaxSalaryByDepId(id);
     }
 
-    @GetMapping(path = "{id}/salary/min")
+    @GetMapping(path = "/{id}/salary/min")
     public double getMinSalaryByDepId(@PathVariable int id) {
         return departmentService.getMinSalaryByDepId(id);
     }
